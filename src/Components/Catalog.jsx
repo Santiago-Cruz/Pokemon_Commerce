@@ -1,12 +1,14 @@
 import { useState, useEffect } from "react";
 import typeColor from "../Color";
 import { HandleFetch } from "../HandleFetch";
+import { useBag } from '../BagContext';
+
 function Catalog(){
+    const { bag, setBag } = useBag();
     const [paginaActual, setPaginaActual] = useState(1);
     const [filter, setFilter] = useState(1);
     const [cardData, setCarddata] = useState([]);
     const [url2, setUrl]= useState(`generation/1`);
-    const [bag, SetBag]= useState([])
 
     // CONTROL DE PAGINAS
 
@@ -30,10 +32,9 @@ function Catalog(){
             setPaginaActual(1); 
         }
     }
-    function handleBag(card){
-        SetBag([...bag, card]);
-        console.log(bag);
-    }
+    const addToBag = (card) => {
+        setBag([...bag, card]);
+    };
 
     useEffect(() =>{
 
@@ -52,7 +53,8 @@ function Catalog(){
         <div className="container">
             <div>
                 {Object.keys(typeColor).map((key) => (
-                    <button key={key} onClick={()=> handleType(key)}>{key}</button>
+
+                    <button id={key} key={key} onClick={()=> handleType(key)}>{key}</button>
                 ))}
             </div>
             <button onClick={()=> handleType("-1")}>Restablecer</button>
@@ -82,7 +84,7 @@ function Catalog(){
                                 <p>Speed</p>
                             </div>
                         </div>
-                        <button id="btn" onClick={()=> handleBag(card)}>ADD</button>
+                        <button id="btn" onClick={()=> addToBag(card)}>ADD</button>
                     </div>
                 ))}
             </div>
