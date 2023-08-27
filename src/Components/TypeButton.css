@@ -1,0 +1,10 @@
+.type-button {
+  width: 60px;
+  height: 60px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border: none;
+  margin: 5px;
+  border-radius: 60px;
+  cursor: pointer;
+}
