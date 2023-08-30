@@ -1,0 +1,11 @@
+.container {
+    display: flex;
+    justify-content: center; /* Centrar horizontalmente */
+    
+  }
+  
+  .paragraph {
+    text-align: justify; /* Texto justificado */
+    max-width: 80%; /* Ancho máximo para el párrafo */
+  }
+  
